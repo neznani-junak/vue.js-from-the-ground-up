@@ -6,8 +6,14 @@
 </head>
 <body>
 	<div id="app">
-		<h1 v-bind:title="menu">{{ title }}</h1>
-		<p v-text="content"></p>
+		<!-- <p v-text="content"></p> -->
+		<!-- <input type="text" v-model="content"> -->
+		
+		<ul>
+			<li v-for="todo in items">{{ todo }}</li>
+		</ul>
+		<input type="text" v-model="item">
+		<button @click="items.push(item)">Add Item</button>
 	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -16,9 +22,13 @@
 			el: '#app',
 
 			data: {
-				title: 'My Title Again',
-				content: 'Here is my text.',
-				menu: 'My menu data here'
+				// title: 'My Title Again',
+				// content: 'Here is my text.',
+				item: '',
+				items: [
+					'item1',
+					'item2'
+				]
 			}
 		});
 	</script>

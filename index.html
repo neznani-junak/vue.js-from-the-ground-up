@@ -8,16 +8,9 @@
 	<div id="app">
 
 		<!-- Start Vue -->
-		
-		<!-- <div>Price {{ price }}</div> -->
-		<!-- <div>Tax {{ price * 0.1 }}</div> -->
-		<!-- <div>Total {{ price + (price * 0.1) }}</div> -->
-		
 		<input type="text" v-model="price">
-		<!-- <div>Tax {{ tax }}</div> -->
-		<div>Tax {{ taxFormatted }}</div>
-		<!-- <div>Total {{ total }}</div> -->
-		<div>Total {{ totalFormatted }}</div>
+		<div>Tax {{ moneyFormat(tax) }}</div>
+		<div>Total {{ moneyFormat(total) }}</div>
 				
 	</div>
 	
@@ -30,23 +23,21 @@
 				price: 100,
 			},
 
+			methods: {
+				moneyFormat: function(price) {
+					// return '$' + price;
+					return '$' + price + '.00';
+				},
+			},
+
 			computed: {
 				tax: function() {
-					// return this.price * 0.1;
 					return this.price * 0.2;
-				},
-
-				taxFormatted: function() {
-					return '$' + this.tax;
 				},
 
 				total: function() {
 					return parseInt(this.price) + this.tax;
 				},
-
-				totalFormatted: function() {
-					return '$' + this.total;
-				}
 			}
 		});
 	</script>
